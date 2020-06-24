@@ -13,24 +13,41 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
-
 @end
 
 @implementation ViewController
+
+double defaultPercentage = 15;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaultPercentage = [defaults doubleForKey:@"default_tip_percentage"];
+    NSString *lowTip = [NSString stringWithFormat:@"%.0f %%",defaultPercentage];
+    [self.tipControl setTitle:lowTip forSegmentAtIndex:0];
+    NSString *medTip = [NSString stringWithFormat:@"%.0f %%",defaultPercentage+5];
+    [self.tipControl setTitle:medTip forSegmentAtIndex:1];
+    NSString *highTip = [NSString stringWithFormat:@"%.0f %%",defaultPercentage+7];
+    [self.tipControl setTitle:highTip forSegmentAtIndex:2];
+    [self onEdit:nil];
+    
+}
+
 - (IBAction)onTap:(id)sender {
-    //equavalent to self.view.endEditing(YES);
+    //equivalent to self.view.endEditing(YES);
     [self.view endEditing:YES];
+    
 }
 - (IBAction)onEdit:(id)sender {
     double bill = [self.mealBillField.text doubleValue];
     
-    NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
+    NSArray *percentages = @[@(defaultPercentage/100), @(defaultPercentage/100 + 0.05), @(defaultPercentage/100 + 0.07)];
     // get selected segment index, get double value, get corresponding percent
     double tipPercentage = [percentages[self.tipControl.selectedSegmentIndex] doubleValue];
     double tip = tipPercentage * bill;

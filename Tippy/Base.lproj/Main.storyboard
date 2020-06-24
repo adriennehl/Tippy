@@ -86,7 +86,13 @@
                             <outletCollection property="gestureRecognizers" destination="x5t-RQ-ter" appends="YES" id="kcF-PK-Zjp"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tips" id="XYe-yY-MAJ"/>
+                    <navigationItem key="navigationItem" title="Tips" id="XYe-yY-MAJ">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="rhl-sx-A7J">
+                            <connections>
+                                <segue destination="hYz-ee-MFT" kind="push" id="hxC-Xd-uej"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mealBillField" destination="5bQ-c1-h0E" id="UtW-qt-CrD"/>
                         <outlet property="tipControl" destination="9v1-qB-dfp" id="cfu-7J-mTK"/>
@@ -102,6 +108,59 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-468.11594202898556" y="137.94642857142856"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="3zc-Tc-bSJ">
+            <objects>
+                <viewController id="hYz-ee-MFT" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vlo-5X-E6T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uKW-Xf-YPb">
+                                <rect key="frame" x="55" y="275" width="189" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="onEdit:" destination="hYz-ee-MFT" eventType="editingChanged" id="p6y-g7-ZVz"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default Tip Percentage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Uc-Km-Qa4">
+                                <rect key="frame" x="82" y="218" width="275" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-u1-nHM">
+                                <rect key="frame" x="252" y="290" width="77" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="63"/>
+                                <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="Gma-Li-oT3"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4Cb-ef-SoQ" appends="YES" id="3I7-yv-jyw"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="MsN-HW-GNx"/>
+                    <connections>
+                        <outlet property="percentageField" destination="uKW-Xf-YPb" id="BiR-CI-zBF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzK-mZ-3fQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Cb-ef-SoQ">
+                    <connections>
+                        <action selector="onTap:" destination="hYz-ee-MFT" id="5C8-Br-8cR"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="382.60869565217394" y="137.94642857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="afW-HR-7fS">
